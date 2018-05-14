@@ -49,10 +49,10 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 
 先不考虑文本数据挖掘和社交关系，所需特征如下：（2018.05.14）
 
-| =user one hot= | =item one hot + item's average rating= | =user's history rating= | =year= | =type= |
+| =user one hot= | =item one hot= | =user's history rating + item's average rating= | =year= | =type= |
 - **user one hot:** user ID 的 one hot 形式，1000维
-- **item one hot + item's average rating:** item ID 的 one hot 形式，其中对于该item的评分用该item的平均分代替，1000维
-- **user's history rating:** 该 user 的历史评分，分数从0-5星(0是没看过)，1000维
+- **item one hot:** item ID 的 one hot 形式，1000维
+- **user's history rating + item's average rating::** 该 user 的历史评分，分数从0-5星(0是没看过)。其中对于该item的评分用item的平均分代替,1000维
 - **year:** 该电影放映的年份（如果能够弄到用户看片的年份就最好了）
 - **type:** 该 item 所属类别，形式为one hot形式，需要先写个type2index的映射，???维
 
