@@ -35,6 +35,7 @@ TypeDict = {AllType[i]: i for i in range(len(AllType))}
 bias = [1000, 2000, 3000, 3001]
 
 for ur_idx, (_, row) in enumerate(df_user.iterrows()):
+
     # 对每一个用户 将他评分过的电影的Id:rate的字典转成Idx:rate
     rates = eval(row['rates'])
     MovieIdx2rate = {}
@@ -73,7 +74,3 @@ for ur_idx, (_, row) in enumerate(df_user.iterrows()):
             features.append(str(bias[3] + i) + ':' + '1')
 
         print('\t'.join(features))
-
-        break
-
-# df_movie.loc[2]['rate']
