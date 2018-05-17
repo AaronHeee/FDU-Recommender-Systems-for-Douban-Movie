@@ -85,7 +85,11 @@ def pos_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path):
             for mv_idx in rates.keys():
                 features.append(str(bias[1] + int(mv_idx)) + ':' + str(rates[mv_idx]))
             # add movie year
-            features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
+            # add movie year
+            if MovieIdx2yr[idx] != '':
+                features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
+            else:
+                features.append(str(bias[2]) + ':0')
             # add movie type
             for i in MovieIdx2type[idx]:
                 features.append(str(bias[3] + i) + ':' + '1')
@@ -142,7 +146,10 @@ def neg_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path):
             for mv_idx in MovieIdx2rate.keys():
                 features.append(str(bias[1] + int(mv_idx)) + ':' + str(MovieIdx2rate[mv_idx]))
             # add movie year
-            features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
+            if MovieIdx2yr[idx] != '':
+                features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
+            else:
+                features.append(str(bias[2]) + ':0')
             # add movie type
             for i in MovieIdx2type[idx]:
                 features.append(str(bias[3] + i) + ':' + '1')
