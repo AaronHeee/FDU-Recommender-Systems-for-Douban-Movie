@@ -77,6 +77,65 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 - 用户关注的graph可视化
 - 数据：user表的user_id和following_id字段
 
+
+
+### 任务安排：
+
+#### 目标：
+
+- **Baseline:** ItemPopularity、SVM、FM
+- **Main Model:** NeuFM
+- **Graph visualization**
+
+#### 冬皓： 
+
+完成了社交关系的可视化，接下来可以探索一下pyecharts的graph可视化。我们把1000人之外的用户叫做“其他用户”，最后建议把结果整理成这种格式：
+
+- 不包括其他用户：
+  - 网络可视化图
+  - 统计信息（如最大、最小度数统计等）
+- 包括其他用户的depth=1的广度优先搜索结果：
+  - 网络可视化图
+  - 统计信息（如最大、最小度数统计等）
+- 完成自己部分的PPT
+
+#### 小花：
+
+完成了feature的提取，接下来完成代码的整理、负样本采集和数据集划分的算法。弄好之后，周末可以尝试SVM的搭建。任务如下：
+
+- 负样本采集要求：
+  - 用一个单独的文件，名为douban.neg
+  - 每行输出格式同上
+  - 输出顺序为逐用户从上自下排列（即先写user 0的所有负样本，再写user 1的所有负样本，依次往下）
+- 数据集划分：
+  - 生成一个所有正样本的文件，名为douban.pos
+  - 测试集：douban.pos中每个user抽取一个正样本，和douban.neg中所有的负样本合并，成为一个测试集，名为douban.test
+  - 验证集：douban.pos中每个user抽取一个正样本，和douban.neg中所有的负样本合并，成为一个测试集，名为douban.validation，正样本和douban.test不得有重复
+  - 训练集：除douban.test和douban.validation之外的所有正样本，另外每个user从douban.neg中抽取4个负样本加入训练集，训练集名为douban.train
+- 统计信息计算：
+  - 正样本、负样本的条数
+  - 用户与电影交互数量的直方图
+
+
+- 完成自己部分的PPT
+
+#### 占魁：
+
+完成了数据导入和FM、NeuFM模型启动（在其他数据集上），接下来等待我们的数据集，以及添加HR和NDCG等ranking的metric，以及用ItemPopularity算法作为简单的Baseline。具体任务为：
+
+- 实现ItemPopularity算法，计算HR、NDCG metric结果。
+- 在FM、NeuFM、SVM上添加HR、NDCG的metric
+
+
+- 跑出ItemPop、SVM、FM、NeuFM的初步实验结果，预期为：
+  - RSME: NeuFM < FM < SVM
+  - HR、NDCG: ItemPop < SVM < FM < NeuFM
+- 完成自己部分的PPT
+
+
+
+
+
 Update 2018.05.14
 
 
