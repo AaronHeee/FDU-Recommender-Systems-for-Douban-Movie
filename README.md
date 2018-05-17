@@ -86,7 +86,9 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 
 #### 冬皓： 
 
-完成了社交关系的可视化，接下来可以探索一下pyecharts的graph可视化。我们把1000人之外的用户叫做“其他用户”，最后建议把结果整理成这种格式：
+完成了社交关系的可视化，接下来可以探索一下pyecharts的graph可视化。我们把1000人之外的用户叫做“其他用户”。
+<details>
+<summary>具体格式</summary>
 
 - 不包括其他用户：
   - 网络可视化图
@@ -96,9 +98,13 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
   - 统计信息（如最大、最小度数统计等）
 - 完成自己部分的PPT
 
+</details>
+
 #### 小花：
 
-完成了feature的提取，接下来完成代码的整理、负样本采集和数据集划分的算法。弄好之后，周末可以尝试SVM的搭建。任务如下：
+完成了feature的提取，接下来完成代码的整理、负样本采集和数据集划分的算法。弄好之后，周末可以尝试SVM的搭建。
+<details>
+<summary>具体任务</summary>
 
 - 负样本采集要求：
   - 用一个单独的文件，名为douban.neg
@@ -112,13 +118,16 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 - 统计信息计算：
   - 正样本、负样本的条数
   - 用户与电影交互数量的直方图
-
-
 - 完成自己部分的PPT
+
+</details>
 
 #### 占魁：
 
-完成了数据导入和FM、NeuFM模型启动（在其他数据集上），接下来等待我们的数据集，以及添加HR和NDCG等ranking的metric，以及用ItemPopularity算法作为简单的Baseline。具体任务为：
+完成了数据导入和FM、NeuFM模型启动（在其他数据集上），接下来等待我们的数据集，以及添加HR和NDCG等ranking的metric，以及用ItemPopularity算法作为简单的Baseline。
+
+<details>
+<summary>具体任务</summary>
 
 - 实现ItemPopularity算法，计算HR、NDCG metric结果。
 - 在FM、NeuFM、SVM上添加HR、NDCG的metric
@@ -128,6 +137,8 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
   - RSME: NeuFM < FM < SVM
   - HR、NDCG: ItemPop < SVM < FM < NeuFM
 - 完成自己部分的PPT
+
+</details>
 
 
 
