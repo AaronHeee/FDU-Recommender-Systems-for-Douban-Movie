@@ -24,6 +24,8 @@ def connectSql():
                            connect_args={"charset": "utf8"})
     df_movie = pd.read_sql('movie', engine, index_col='number')
     df_user = pd.read_sql('user', engine, index_col='user_id')
+    df_movie.index = df_movie.index-1
+    df_user.index = df_user.index-1
     return df_movie, df_user
 
 
