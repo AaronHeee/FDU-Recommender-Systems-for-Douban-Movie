@@ -65,9 +65,77 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 
 ### 模型初步实现：
 
-- ItemPop 模型
-- Neural FM模型
+#### ItemPop 模型
 
+#### SVM 模型
+
+#### Neural FM模型
+
+##### Factorization Machine模型使用方式
+
+- 模型原理：
+
+- 模型使用：
+
+  - 进入 neural_factorization_machine/文件夹
+  - 输入`python FM.py` 即可，详细参数可见 `python FM.py -h`
+
+- 参数调优：
+
+  - 调优方式：
+
+    - 进入 neural_factorization_machine/bash，新建 .sh 文件，命名规则为 **模型名\_参数名1_参数名2.sh**
+
+    - 举例：新建 FM_lr_bs.sh，输入
+
+      ```shell
+      for lr in 0.005 0.01 0.05 0.1 0.5
+      do
+          for bs in 16 32 64 128 256 512
+          do
+              CUDA_VISIBLE_DEVICES="-1" python FM.py --lr $lr --batch_size $bs --log_path zhankui --log_on [\'lr\',\'batch_size\'];
+          done
+      done
+      ```
+
+      其中 log_path 是记录文件夹路径，log_on是记录文件夹的命名规则，for循环代表Grid-search范围。
+
+##### Factorization Machine模型使用方式
+
+- 模型原理：
+
+- 模型使用：
+
+  - 进入 neural_factorization_machine/文件夹
+  - 输入`python NeuralFM.py` 即可，详细参数可见 `python NeuralFM.py -h`
+
+- 参数调优：
+
+  - 调优方式：
+
+    - 进入 neural_factorization_machine/bash，新建 .sh 文件，命名规则为 **模型名\_参数名1_参数名2.sh**
+
+    - 举例：新建 NeuralFM_lr_bs.sh，输入
+
+      ```shell
+      for lr in 0.005 0.01 0.05 0.1 0.5
+      do
+          for bs in 16 32 64 128 256 512
+          do
+              CUDA_VISIBLE_DEVICES="-1" python NeuralFM.py --lr $lr --batch_size $bs --log_path zhankui --log_on [\'lr\',\'batch_size\'];
+          done
+      done
+      ```
+
+      其中 log_path 是记录文件夹路径，log_on是记录文件夹的命名规则，for循环代表Grid-search范围。
+
+##### 各自任务：
+
+- 占魁：learning rate, batch size, hidden factor, layers 调优
+- 小花：feature的组成、表征探索
+- 冬皓：dropout, batch_norm, regularization 调优
+
+PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时间。
 
 ### 社交网络实现：
 
@@ -128,8 +196,6 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
   - RSME: NeuFM < FM < SVM
   - HR、NDCG: ItemPop < SVM < FM < NeuFM
 - 完成自己部分的PPT
-
-
 
 
 
