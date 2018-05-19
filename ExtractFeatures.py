@@ -88,14 +88,17 @@ def pos_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path):
                 features.append(str(bias[1] + int(mv_idx)) + ':' + str(rates[mv_idx]))
             # add movie year
             # add movie year
-            if MovieIdx2yr[idx] != '':
-                features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
-            else:
-                features.append(str(bias[2]) + ':0')
+            # if MovieIdx2yr[idx] != '':
+            #     features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
+            # else:
+            #     features.append(str(bias[2]) + ':0')
             # add movie type
             for i in MovieIdx2type[idx]:
-                features.append(str(bias[3] + i) + ':' + '1')
+                features.append(str(bias[2] + i) + ':' + '1')
 
+            to_sort = features[1:]
+            to_sort.sort(key=lambda x: int(x.split(':')[0]))
+            features[1:] = to_sort
             file.write(' '.join(features) + '\n')
 
     file.close()
@@ -148,14 +151,17 @@ def neg_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path):
             for mv_idx in MovieIdx2rate.keys():
                 features.append(str(bias[1] + int(mv_idx)) + ':' + str(MovieIdx2rate[mv_idx]))
             # add movie year
-            if MovieIdx2yr[idx] != '':
-                features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
-            else:
-                features.append(str(bias[2]) + ':0')
+            # if MovieIdx2yr[idx] != '':
+            #     features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
+            # else:exit()
+            #     features.append(str(bias[2]) + ':0')
             # add movie type
             for i in MovieIdx2type[idx]:
-                features.append(str(bias[3] + i) + ':' + '1')
+                features.append(str(bias[2] + i) + ':' + '1')
 
+            to_sort = features[1:]
+            to_sort.sort(key=lambda x: int(x.split(':')[0]))
+            features[1:] = to_sort
             file.write(' '.join(features) + '\n')
 
     file.close()
@@ -239,7 +245,7 @@ def split_dataset(path):
     my_write(path + '.validation', valid)
 
 if __name__ == '__main__':
-    bias = [1000, 2000, 3000, 3001]
+    bias = [1000, 2000, 3000]   # 3001
     path = 'douban'    # 40381 douban.pos, 959619 douban.neg
 
     df_movie, df_user = connectSql()
