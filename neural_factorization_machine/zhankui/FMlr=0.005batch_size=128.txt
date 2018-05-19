@@ -1,0 +1,9 @@
+Sat 19 May 2018 16:29 33 ==============
+Sat 19 May 2018 16:29 33 Namespace(batch_norm=0, batch_size=128, dataset='douban-05-20', epoch=30, feature_length=3030, hidden_factor=64, keep_prob=1, lamda=0, log_on="['lr','batch_size']", log_path='zhankui', loss_type='square_loss', lr=0.005, neg_num=2, optimizer='AdagradOptimizer', path='data/', pretrain=-1, verbose=1)
+Sat 19 May 2018 16:31 01 Init: 	 train: RMSE 3.3416, NDCG 0.4803, validation: RMSE 0.5574, NDCG 0.0427, test: RMSE 0.5574, NDCG 0.0427 [20.3 s]
+Sat 19 May 2018 16:34 06 Epoch 1 [122.8 s]	train: RMSE 1.4215, NDCG 0.6612, validation: RMSE 1.5053, NDCG 0.1464, test: RMSE 1.5053, NDCG 0.1464 [62.1 s]
+Sat 19 May 2018 16:37 19 Epoch 2 [122.0 s]	train: RMSE 1.2941, NDCG 0.6955, validation: RMSE 1.2961, NDCG 0.1817, test: RMSE 1.2961, NDCG 0.1817 [64.2 s]
+Sat 19 May 2018 16:40 31 Epoch 3 [124.0 s]	train: RMSE 1.2580, NDCG 0.7112, validation: RMSE 1.1918, NDCG 0.2089, test: RMSE 1.1918, NDCG 0.2089 [61.5 s]
+Sat 19 May 2018 16:43 41 Epoch 4 [119.8 s]	train: RMSE 1.2180, NDCG 0.7188, validation: RMSE 1.1797, NDCG 0.2356, test: RMSE 1.1797, NDCG 0.2356 [64.2 s]
+Sat 19 May 2018 16:46 59 Epoch 5 [123.9 s]	train: RMSE 1.1792, NDCG 0.7283, validation: RMSE 1.1452, NDCG 0.2562, test: RMSE 1.1452, NDCG 0.2562 [66.9 s]
+Sat 19 May 2018 16:50 10 Epoch 6 [119.9 s]	train: RMSE 1.1583, NDCG 0.7330, validation: RMSE 1.1486, NDCG 0.2710, test: RMSE 1.1486, NDCG 0.2710 [64.4 s]

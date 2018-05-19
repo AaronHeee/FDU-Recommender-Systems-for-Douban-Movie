@@ -1,0 +1,6 @@
+Sat 19 May 2018 15:59 37 ==============
+Sat 19 May 2018 15:59 37 Namespace(batch_norm=0, batch_size=32, dataset='douban-05-20', epoch=30, feature_length=3030, hidden_factor=64, keep_prob=1, lamda=0, log_on="['lr','batch_size']", log_path='zhankui', loss_type='square_loss', lr=0.005, neg_num=2, optimizer='AdagradOptimizer', path='data/', pretrain=-1, verbose=1)
+Sat 19 May 2018 16:01 00 Init: 	 train: RMSE 3.3416, NDCG 0.4815, validation: RMSE 0.5574, NDCG 0.0427, test: RMSE 0.5574, NDCG 0.0427 [19.2 s]
+Sat 19 May 2018 16:03 15 Epoch 1 [88.8 s]	train: RMSE 1.4562, NDCG 0.6440, validation: RMSE 1.4374, NDCG 0.2151, test: RMSE 1.4374, NDCG 0.2151 [45.8 s]
+Sat 19 May 2018 16:05 30 Epoch 2 [83.7 s]	train: RMSE 1.3583, NDCG 0.6598, validation: RMSE 1.4841, NDCG 0.2913, test: RMSE 1.4841, NDCG 0.2913 [45.4 s]
+Sat 19 May 2018 16:07 47 Epoch 3 [86.2 s]	train: RMSE 1.2943, NDCG 0.6708, validation: RMSE 1.5647, NDCG 0.3307, test: RMSE 1.5647, NDCG 0.3307 [45.1 s]
