@@ -44,7 +44,8 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 
 #### 特征内容：
 
-先不考虑文本数据挖掘和社交关系，所需特征如下：（2018.05.14）
+<details>
+<summary>先不考虑文本数据挖掘和社交关系，所需特征如下：（2018.05.14）</summary>
 
 | =user one hot= | =item one hot= | =user's history rating + item's average rating= | =year= | =type= |
 - **user one hot:** user ID 的 one hot 形式，1000维
@@ -52,6 +53,8 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 - **user's history rating + item's average rating::** 该 user 的历史评分，分数从0-5星(0是没看过)。其中对于该item的评分用item的平均分代替,1000维
 - **year:** 该电影放映的年份（如果能够弄到用户看片的年份就最好了）
 - **type:** 该 item 所属类别，形式为one hot形式，需要先写个type2index的映射，???维
+
+</details>
 
 
 #### 输出格式：
@@ -62,6 +65,7 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 
 输出文件为douban.data(所有记录)、douban.train(训练集)、douban.test(测试集)、douban.validation(验证集)
 
+## 模型：
 
 ### 模型初步实现：
 
@@ -71,9 +75,10 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 
 #### Neural FM模型
 
-##### Factorization Machine模型使用方式
+<details>
+<summary>Factorization Machine模型使用方式:</summary>
 
-- 模型原理：
+- 模型原理：[Factorization Machines](https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf)
 
 - 模型使用：
 
@@ -100,9 +105,12 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 
       其中 log_path 是记录文件夹路径，log_on是记录文件夹的命名规则，for循环代表Grid-search范围。
 
-##### Factorization Machine模型使用方式
+</details>
 
-- 模型原理：
+<details>
+<summary>Neural Factorization Machine模型使用方式:</summary>
+
+- 模型原理：[Neural Factorization Machines for Sparse Predictive Analytics ](http://www.comp.nus.edu.sg/~xiangnan/papers/sigir17-nfm.pdf)
 
 - 模型使用：
 
@@ -129,13 +137,18 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 
       其中 log_path 是记录文件夹路径，log_on是记录文件夹的命名规则，for循环代表Grid-search范围。
 
-##### 各自任务：
+</details>
+
+<details>
+<summary>各自任务</summary>
 
 - 占魁：learning rate, batch size, hidden factor, layers 调优
 - 小花：feature的组成、表征探索
 - 冬皓：dropout, batch_norm, regularization 调优
 
 PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时间。
+
+</details>
 
 ### 社交网络实现：
 
@@ -144,17 +157,19 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 
 
 
-### 任务安排：
+## 任务安排：
 
 #### 目标：
 
-- **Baseline:** ItemPopularity、SVM、FM
-- **Main Model:** NeuFM
+- **Baseline:** ItemPopularity、SVM、FM  还差ItemPop没实现
+- **Main Model:**  NeuralFM 还差调优
 - **Graph visualization**
 
-#### 冬皓： 
+#### [冬皓](https://github.com/Lidonghao1996):
 
-完成了社交关系的可视化，接下来可以探索一下pyecharts的graph可视化。我们把1000人之外的用户叫做“其他用户”，最后建议把结果整理成这种格式：
+完成了社交关系的可视化，接下来可以探索一下pyecharts的graph可视化。我们把1000人之外的用户叫做“其他用户”。
+<details>
+<summary>具体格式</summary>
 
 - 不包括其他用户：
   - 网络可视化图
@@ -164,9 +179,13 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
   - 统计信息（如最大、最小度数统计等）
 - 完成自己部分的PPT
 
-#### 小花：
+</details>
 
-完成了feature的提取，接下来完成代码的整理、负样本采集和数据集划分的算法。弄好之后，周末可以尝试SVM的搭建。任务如下：
+#### [小花](https://github.com/Rshcaroline):
+
+完成了feature的提取，接下来完成代码的整理、负样本采集和数据集划分的算法。弄好之后，周末可以尝试SVM的搭建。
+<details>
+<summary>具体任务</summary>
 
 - 负样本采集要求：
   - 用一个单独的文件，名为douban.neg
@@ -180,13 +199,16 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 - 统计信息计算：
   - 正样本、负样本的条数
   - 用户与电影交互数量的直方图
-
-
 - 完成自己部分的PPT
 
-#### 占魁：
+</details>
 
-完成了数据导入和FM、NeuFM模型启动（在其他数据集上），接下来等待我们的数据集，以及添加HR和NDCG等ranking的metric，以及用ItemPopularity算法作为简单的Baseline。具体任务为：
+#### [占魁](https://github.com/AaronHeee)：
+
+完成了数据导入和FM、NeuFM模型启动（在其他数据集上），接下来等待我们的数据集，以及添加HR和NDCG等ranking的metric，以及用ItemPopularity算法作为简单的Baseline。
+
+<details>
+<summary>具体任务</summary>
 
 - 实现ItemPopularity算法，计算HR、NDCG metric结果。
 - 在FM、NeuFM、SVM上添加HR、NDCG的metric
@@ -197,9 +219,7 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
   - HR、NDCG: ItemPop < SVM < FM < NeuFM
 - 完成自己部分的PPT
 
+</details>
 
 
-Update 2018.05.14
-
-
-
+Update 2018.05.18
