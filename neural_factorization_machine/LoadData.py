@@ -28,9 +28,9 @@ class LoadData(object):
         self.trainfile = self.path + dataset +".train.libfm"
         self.testfile = self.path + dataset + ".test.libfm"
         self.validationfile = self.path + dataset + ".test.libfm"
-        self.negativefile = self.path + dataset + ".neg"
+        # self.negativefile = self.path + dataset + ".neg"
         self.features_M = self.map_features(feature_length)
-        self.dict_neg = self.read_neg(self.negativefile)
+        # self.dict_neg = self.read_neg(self.negativefile)
         self.Train_data, self.Validation_data, self.Test_data = self.construct_data( loss_type )
 
     def read_neg(self, file):
@@ -74,7 +74,7 @@ class LoadData(object):
             self.read_features(self.trainfile)
             self.read_features(self.testfile)
             self.read_features(self.validationfile)
-            self.read_features(self.negativefile)
+            # self.read_features(self.negativefile)
         #print("features_M:", len(self.features))
         return  len(self.features)
 
