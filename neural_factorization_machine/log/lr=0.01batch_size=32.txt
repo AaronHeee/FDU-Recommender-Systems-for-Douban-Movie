@@ -1,1 +1,0 @@
-Sat 19 May 2018 15:32 33 Namespace(batch_norm=0, batch_size=32, dataset='douban-05-19', epoch=30, feature_length=3030, hidden_factor=64, keep_prob=1, lamda=0, log_on="['lr', 'batch_size']", log_path='log', loss_type='square_loss', lr=0.01, neg_num=2, optimizer='AdagradOptimizer', path='data/', pretrain=-1, verbose=1)

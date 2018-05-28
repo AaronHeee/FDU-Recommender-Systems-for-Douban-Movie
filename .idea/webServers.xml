@@ -10,6 +10,22 @@
           <option name="port" value="22" />
         </fileTransfer>
       </webServer>
+      <webServer id="ab320a0c-72d1-4a22-92f6-31751c0090a5" name="citory" url="http://citory.eatuo.com">
+        <fileTransfer host="citory.eatuo.com" port="22" rootFolder="/home/intern" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="6e1fe1e3-b725-4182-9e53-df9257bfadd9" name="Fu" url="http://10.141.208.236">
+        <fileTransfer host="10.141.208.236" port="22" rootFolder="/home/ldh" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
