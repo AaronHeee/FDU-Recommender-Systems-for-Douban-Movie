@@ -196,6 +196,7 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 <details>
 <summary>06.07 - 06.15 </summary>
 - 有时间可以尝试KCNN提取文本信息(ddl: 06.07+)
+  
 - 开始着手写report和PPT的相关部分
 </details>
 
