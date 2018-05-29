@@ -184,18 +184,19 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 <details>
 <summary>05.28 - 06.07 </summary>
 
-- 在 douban++ 数据集上完成上述任务
+- 在 douban++ 数据集上完成上述任务 (ddl:06.03)
     - 留意大数据集上性能问题
     - 尝试优化可视化界面  
-
-- Graph Embedding 算法
-    - 在计算的Graph基础上尝试Embedding提取  
+- 完成Doc2Vec的训练(ddl: 06.07)
+    - 输入：（电影名称、电影简介）
+    - 输出：（ItemID, 电影名称），（ItemID, DocVector）
+- 有时间可以尝试KCNN提取文本信息(ddl: 06.07+)
 
 </details>
 
 
 
-#### [小花](https://github.com/Rshcaroline): 完成数据清洗、特征提取，兼负责SVM模型的搭建：
+#### [小花](https://github.com/Rshcaroline): 完成数据清洗、特征提取、比较，兼负责SVM模型的搭建：
 
 <details>
 <summary>05.13 - 05.25</summary>
@@ -219,15 +220,25 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 <details>
 <summary>05.28 - 06.07 </summary>
 
-- 在 douban++ 数据集上完成上述特征提取
+- 在 douban++ 数据集上完成上述特征提取和对比试验 (ddl: 06.07)
     - 生成 |user one hot | item one hot | 特征
     - 生成 |user one hot | item one hot | item rating history | 特征
     - 生成 |user one hot | item one hot | item rating history + average rating | 特征
+    - 添加 | user following id | 信息
+    - 添加 | user follower's rating | 信息
 
-- 评论等文本信息挖掘
-    - KCNN、Doc2Vec 文本特征尝试  
 
 </details>
+
+<details>
+<summary> 06.07-06.15 </summary>
+
+-  前端网页搭建：
+   -  交互式社交网络放在前端
+
+</details>
+
+
 
 #### [占魁](https://github.com/AaronHeee)： 完成推荐系统模型搭建和拓展、Metric设计、实验设计，兼负责网页前端：
 
@@ -248,8 +259,20 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 <details>
 <summary>05.28 - 06.07 </summary>
 
-- 网页前端设计
-    - 关于社交网络可视化、推荐信息的融合展现  
+- 在douban++上完成上述任务 (ddl: 06.03)
+- 完成Graph的构建和Graph Node Embedding的训练 (ddl: 06.07)
+    - 输入：（电影名称、电影导演、电影演员）
+    - 输出：（NodeID, 结点名称），（NodeID, Embedding）
+
+</details>
+
+<details>
+<summary> 06.07-06.15 </summary>
+
+-  完成多个深度Embedding的融合、实验
+
+-  前端网页搭建：
+   -  在社交网络中添加豆瓣推荐信息
 
 </details>
 
