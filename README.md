@@ -190,10 +190,14 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 - 完成Doc2Vec的训练(ddl: 06.07)
     - 输入：（电影名称、电影简介）
     - 输出：（ItemID, 电影名称），（ItemID, DocVector）
-- 有时间可以尝试KCNN提取文本信息(ddl: 06.07+)
 
 </details>
 
+<details>
+<summary>06.07 - 06.15 </summary>
+- 有时间可以尝试KCNN提取文本信息(ddl: 06.07+)
+- 开始着手写report和PPT的相关部分
+</details>
 
 
 #### [小花](https://github.com/Rshcaroline): 完成数据清洗、特征提取、比较，兼负责SVM模型的搭建：
@@ -231,7 +235,7 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 </details>
 
 <details>
-<summary> 06.07-06.15 </summary>
+<summary>06.07-06.15 </summary>
 
 -  前端网页搭建：
    -  交互式社交网络放在前端
@@ -267,7 +271,7 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 </details>
 
 <details>
-<summary> 06.07-06.15 </summary>
+<summary>06.07-06.15 </summary>
 
 -  完成多个深度Embedding的融合、实验
 
