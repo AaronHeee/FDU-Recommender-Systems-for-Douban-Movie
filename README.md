@@ -161,15 +161,14 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 
 #### 目标：
 
-- **Baseline:** ItemPopularity、SVM、FM  还差ItemPop没实现
-- **Main Model:**  NeuralFM 还差调优
-- **Graph visualization**
+- **Baseline:** ItemPopularity、SVM、FM √
+- **Main Model:**  NeuralFM √
+- **Graph visualization:** PyEcharts Graph √
 
-#### [冬皓](https://github.com/Lidonghao1996):
+#### [冬皓](https://github.com/Lidonghao1996): 负责社交网络分析与可视化，兼负责模型实验:
 
-完成了社交关系的可视化，接下来可以探索一下pyecharts的graph可视化。我们把1000人之外的用户叫做“其他用户”。
 <details>
-<summary>具体格式</summary>
+<summary>05.13 - 05.25 </summary>
 
 - 不包括其他用户：
   - 网络可视化图
@@ -177,15 +176,35 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 - 包括其他用户的depth=1的广度优先搜索结果：
   - 网络可视化图
   - 统计信息（如最大、最小度数统计等）
+- 完成PageRank、度分布统计
 - 完成自己部分的PPT
 
 </details>
 
-#### [小花](https://github.com/Rshcaroline):
-
-完成了feature的提取，接下来完成代码的整理、负样本采集和数据集划分的算法。弄好之后，周末可以尝试SVM的搭建。
 <details>
-<summary>具体任务</summary>
+<summary>05.28 - 06.07 </summary>
+
+- 在 douban++ 数据集上完成上述任务 (ddl:06.03)
+    - 留意大数据集上性能问题
+    - 尝试优化可视化界面  
+- 完成Doc2Vec的训练(ddl: 06.07)
+    - 输入：（电影名称、电影简介）
+    - 输出：（ItemID, 电影名称），（ItemID, DocVector）
+
+</details>
+
+<details>
+<summary>06.07 - 06.15 </summary>
+
+- 有时间可以尝试KCNN提取文本信息(ddl: 06.07+)  
+- 开始着手写report和PPT的相关部分
+</details>
+
+
+#### [小花](https://github.com/Rshcaroline): 完成数据清洗、特征提取、比较，兼负责SVM模型的搭建：
+
+<details>
+<summary>05.13 - 05.25</summary>
 
 - 负样本采集要求：
   - 用一个单独的文件，名为douban.neg
@@ -203,12 +222,33 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 
 </details>
 
-#### [占魁](https://github.com/AaronHeee)：
+<details>
+<summary>05.28 - 06.07 </summary>
 
-完成了数据导入和FM、NeuFM模型启动（在其他数据集上），接下来等待我们的数据集，以及添加HR和NDCG等ranking的metric，以及用ItemPopularity算法作为简单的Baseline。
+- 在 douban++ 数据集上完成上述特征提取和对比试验 (ddl: 06.07)
+    - 生成 |user one hot | item one hot | 特征
+    - 生成 |user one hot | item one hot | item rating history | 特征
+    - 生成 |user one hot | item one hot | item rating history + average rating | 特征
+    - 添加 | user following id | 信息
+    - 添加 | user follower's rating | 信息
+
+
+</details>
 
 <details>
-<summary>具体任务</summary>
+<summary>06.07-06.15 </summary>
+
+-  前端网页搭建：
+   -  交互式社交网络可视化
+
+</details>
+
+
+
+#### [占魁](https://github.com/AaronHeee)： 完成推荐系统模型搭建和拓展、Metric设计、实验设计，兼负责网页前端：
+
+<details>
+<summary>05.13 - 05.25</summary>
 
 - 实现ItemPopularity算法，计算HR、NDCG metric结果。
 - 在FM、NeuFM、SVM上添加HR、NDCG的metric
@@ -221,5 +261,26 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 
 </details>
 
+<details>
+<summary>05.28 - 06.07 </summary>
 
-Update 2018.05.18
+- 在douban++上完成上述任务 (ddl: 06.03)
+- 完成Graph的构建和Graph Node Embedding的训练 (ddl: 06.07)
+    - 输入：（电影名称、电影导演、电影演员）
+    - 输出：（NodeID, 结点名称），（NodeID, Embedding）
+
+</details>
+
+<details>
+<summary>06.07-06.15 </summary>
+
+-  完成多个深度Embedding的融合、实验
+
+-  前端网页搭建：
+   -  在社交网络中添加豆瓣推荐信息
+
+</details>
+
+Update 2018.05.28
+
+

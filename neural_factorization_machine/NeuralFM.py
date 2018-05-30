@@ -30,7 +30,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Run Neural FM.")
     parser.add_argument('--path', nargs='?', default='data/',
                         help='Input data path.')
-    parser.add_argument('--dataset', nargs='?', default='frappe',
+    parser.add_argument('--dataset', nargs='?', default='douban-05-20',
                         help='Choose a dataset.')
     parser.add_argument('--epoch', type=int, default=30,
                         help='Number of epochs.')
@@ -58,11 +58,11 @@ def parse_args():
                     help='Whether to perform batch normaization (0 or 1)')
     parser.add_argument('--activation', nargs='?', default='relu',
                     help='Which activation function to use for deep layers: relu, sigmoid, tanh, identity')
-    parser.add_argument('--early_stop', type=int, default=1,
+    parser.add_argument('--early_stop', type=int, default=0,
                     help='Whether to perform early stop (0 or 1)')
-    parser.add_argument('--feature_length', type=int, default=None,
+    parser.add_argument('--feature_length', type=int, default=3030,
                     help='When None: the feature length will be detected from files')
-    parser.add_argument('--neg_num', type=float, default=0,
+    parser.add_argument('--neg_num', type=float, default=2,
                         help='Number of negative samples for each user in train data')
     parser.add_argument('--log_path', type=str, default='log',
                         help='the folder of logging')
@@ -178,7 +178,9 @@ class NeuralFM(BaseEstimator, TransformerMixin):
             # init
             self.saver = tf.train.Saver()
             init = tf.global_variables_initializer()
-            self.sess = tf.Session()
+            config = tf.ConfigProto()
+            config.gpu_options.per_process_gpu_memory_fraction = 0.3
+            self.sess = tf.Session(config=config)
             self.sess.run(init)
 
             # number of params

@@ -15,7 +15,9 @@ ground truth: 3
 
 ==>
 
-3 5:1 10+1000:1 key+2000:rating 3001: year 3001+type: 1
+# User: 5000, # Movie: 41785
+3 5:1 10+1000:1 key+2000:rating 3000+type: 1 3028+usr following id
+
 """
 
 
@@ -43,10 +45,15 @@ def preprocess(df_movie, df_user):
     AllType = list(set(AllType))
     TypeDict = {AllType[i]: i for i in range(len(AllType))}
 
-    return MovieId2Idx, TypeDict
+    # 记录用户名到ID
+    UserId2Idx = {}
+    for idx, row in df_user.iterrows():
+        UserId2Idx[row['name']] = idx
+
+    return MovieId2Idx, TypeDict, UserId2Idx
 
 
-def pos_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path):
+def pos_sample(df_movie, df_user, MovieId2Idx, TypeDict, UserId2Idx, bias, path):
     file = open(path + '.pos', 'w')
 
     for ur_idx, (_, row) in enumerate(df_user.iterrows()):
@@ -54,10 +61,16 @@ def pos_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path):
 
         # 对每一个用户 将他评分过的电影的Id:rate的字典转成Idx:rate
         rates = eval(row['rates'])
+        usr_following = eval(row['following_id'])
+        UsrIdx2following = []
         MovieIdx2rate = {}
         for id in rates.keys():
             if id in MovieId2Idx:
                 MovieIdx2rate[MovieId2Idx[id]] = rates[id]
+        for id in usr_following:
+            if id in UserId2Idx:
+                UsrIdx2following.append(UserId2Idx[id])
+
 
         # 利用idx去使用dataframe
         # 取电影的year, average rate, type信息
@@ -86,15 +99,20 @@ def pos_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path):
             # add rates
             for mv_idx in rates.keys():
                 features.append(str(bias[1] + int(mv_idx)) + ':' + str(rates[mv_idx]))
-            # add movie year
+
             # add movie year
             # if MovieIdx2yr[idx] != '':
             #     features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
             # else:
             #     features.append(str(bias[2]) + ':0')
+
             # add movie type
             for i in MovieIdx2type[idx]:
                 features.append(str(bias[2] + i) + ':' + '1')
+
+            # add user following id
+            for usr in UsrIdx2following:
+                features.append(str(bias[3] + int(usr)) + ':' + '1')
 
             to_sort = features[1:]
             to_sort.sort(key=lambda x: int(x.split(':')[0]))
@@ -104,7 +122,7 @@ def pos_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path):
     file.close()
 
 
-def neg_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path):
+def neg_sample(df_movie, df_user, MovieId2Idx, TypeDict, UserId2Idx, bias, path):
     file = open(path + '.neg', 'w')
 
     for ur_idx, (_, row) in enumerate(df_user.iterrows()):
@@ -112,10 +130,15 @@ def neg_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path):
 
         # 对每一个用户 将他评分过的电影的Id:rate的字典转成Idx:rate
         rates = eval(row['rates'])
+        usr_following = eval(row['following_id'])
+        UsrIdx2following = []
         MovieIdx2rate = {}
         for id in rates.keys():
             if id in MovieId2Idx:
                 MovieIdx2rate[MovieId2Idx[id]] = rates[id]
+        for id in usr_following:
+            if id in UserId2Idx:
+                UsrIdx2following.append(UserId2Idx[id])
 
         # 生成没有评价过的电影列表
         unrates = set(df_movie.index) - set(MovieIdx2rate.keys())
@@ -150,14 +173,20 @@ def neg_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path):
             # add rates
             for mv_idx in MovieIdx2rate.keys():
                 features.append(str(bias[1] + int(mv_idx)) + ':' + str(MovieIdx2rate[mv_idx]))
+
             # add movie year
             # if MovieIdx2yr[idx] != '':
             #     features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
             # else:exit()
             #     features.append(str(bias[2]) + ':0')
+
             # add movie type
             for i in MovieIdx2type[idx]:
                 features.append(str(bias[2] + i) + ':' + '1')
+
+            # add user following id
+            for usr in UsrIdx2following:
+                features.append(str(bias[3] + int(usr)) + ':' + '1')
 
             to_sort = features[1:]
             to_sort.sort(key=lambda x: int(x.split(':')[0]))
@@ -245,12 +274,12 @@ def split_dataset(path):
     my_write(path + '.validation', valid)
 
 if __name__ == '__main__':
-    bias = [1000, 2000, 3000]   # 3001
-    path = 'douban'    # 40381 douban.pos, 959619 douban.neg
+    bias = [1000, 2000, 3000, 3028]
+    path = './Features/1/douban'    # 40381 douban.pos, 959619 douban.neg
 
     df_movie, df_user = connectSql()
 
-    MovieId2Idx, TypeDict = preprocess(df_movie, df_user)
-    pos_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path)
-    neg_sample(df_movie, df_user, MovieId2Idx, TypeDict, bias, path)
+    MovieId2Idx, TypeDict, UserId2Idx = preprocess(df_movie, df_user)
+    pos_sample(df_movie, df_user, MovieId2Idx, TypeDict, UserId2Idx, bias, path)
+    neg_sample(df_movie, df_user, MovieId2Idx, TypeDict, UserId2Idx, bias, path)
     split_dataset(path)

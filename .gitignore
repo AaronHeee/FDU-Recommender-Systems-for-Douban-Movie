@@ -2,3 +2,10 @@
 .DS_store
 *.xml
 *data/
+*bash/
+*log/
+*zhankui/
+*.xlsx
+*.pptx
+*.xls
+*.ppt

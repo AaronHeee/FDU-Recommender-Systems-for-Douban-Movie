@@ -169,7 +169,9 @@ class FM(BaseEstimator, TransformerMixin):
             # init
             self.saver = tf.train.Saver()
             init = tf.global_variables_initializer()
-            self.sess = tf.Session()
+            config = tf.ConfigProto()
+            config.gpu_options.per_process_gpu_memory_fraction = 0.3
+            self.sess = tf.Session(config=config)
             self.sess.run(init)
 
             # number of params
