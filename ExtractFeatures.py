@@ -46,14 +46,26 @@ def preprocess(df_movie, df_user):
     # TypeDict = {AllType[i]: i for i in range(len(AllType))}
 
     # 记录用户名到ID
+    UserIdx2following ={}
     UserId2Idx = {}
     for idx, row in df_user.iterrows():
         UserId2Idx[row['name']] = idx
+    for idx, row in df_user.iterrows():
+        usr_following = row['following_id'].split('#')
+        following_id = set(usr_following) & set(UserId2Idx.keys())
+        UserIdx2following[idx] = [UserId2Idx[id] for id in following_id]
 
-    return MovieId2Idx, UserId2Idx  # TypeDict
+    following_rates = np.zeros(shape=(len(df_user), len(df_movie)))
+    for idx, row in df_user.iterrows():
+        rates_id = eval(row['rates'])
+        for id in rates_id.keys():
+            if id in MovieId2Idx:
+                following_rates[idx][MovieId2Idx[id]] = rates_id[id]
+
+    return MovieId2Idx, UserIdx2following, following_rates  # TypeDict
 
 
-def pos_sample(df_movie, df_user, MovieId2Idx, UserId2Idx, bias, path):
+def pos_sample(df_movie, df_user, MovieId2Idx, UserIdx2following, following_rates, bias, path):
     file = open(path + '.pos', 'w')
 
     for ur_idx, (_, row) in enumerate(df_user.iterrows()):
@@ -61,16 +73,10 @@ def pos_sample(df_movie, df_user, MovieId2Idx, UserId2Idx, bias, path):
 
         # 对每一个用户 将他评分过的电影的Id:rate的字典转成Idx:rate
         rates = eval(row['rates'])
-        usr_following = row['following_id'].split('#')
-        UsrIdx2following = []
         MovieIdx2rate = {}
         for id in rates.keys():
             if id in MovieId2Idx:
                 MovieIdx2rate[MovieId2Idx[id]] = rates[id]
-        for id in usr_following:
-            if id in UserId2Idx:
-                UsrIdx2following.append(UserId2Idx[id])
-
 
         # 利用idx去使用dataframe
         # 取电影的year, average rate, type信息
@@ -117,8 +123,16 @@ def pos_sample(df_movie, df_user, MovieId2Idx, UserId2Idx, bias, path):
             #
             # feature 4:
             # add user following id
-            for usr in UsrIdx2following:
+            for usr in UserIdx2following[ur_idx]:
                 features.append(str(bias[2] + int(usr)) + ':' + '1')
+
+            # feature 5:
+            # add user following rates
+            follw_usr_mv_2d = np.argwhere(following_rates[UserIdx2following[ur_idx]].mean(axis=0)>0)
+            follw_usr_mv = follw_usr_mv_2d.flatten()
+            follw_usr_mv_rates = following_rates[UserIdx2following[ur_idx]].mean(axis=0)[follw_usr_mv_2d.reshape(None,)].flatten()
+            for mv in range(len(follw_usr_mv)):
+                features.append(str(bias[3] + int(follw_usr_mv[mv])) + ':' + str(follw_usr_mv_rates[mv]))
 
             to_sort = features[1:]
             to_sort.sort(key=lambda x: int(x.split(':')[0]))
@@ -128,7 +142,7 @@ def pos_sample(df_movie, df_user, MovieId2Idx, UserId2Idx, bias, path):
     file.close()
 
 
-def neg_sample(df_movie, df_user, MovieId2Idx, UserId2Idx, bias, path):
+def neg_sample(df_movie, df_user, MovieId2Idx, UserIdx2following, following_rates, bias, path):
     file = open(path + '.neg', 'w')
 
     for ur_idx, (_, row) in enumerate(df_user.iterrows()):
@@ -136,16 +150,10 @@ def neg_sample(df_movie, df_user, MovieId2Idx, UserId2Idx, bias, path):
 
         # 对每一个用户 将他评分过的电影的Id:rate的字典转成Idx:rate
         rates = eval(row['rates'])
-        usr_following = row['following_id'].split('#')
-        UsrIdx2following = []
         MovieIdx2rate = {}
         for id in rates.keys():
             if id in MovieId2Idx:
                 MovieIdx2rate[MovieId2Idx[id]] = rates[id]
-        for id in usr_following:
-            if id in UserId2Idx:
-                UsrIdx2following.append(UserId2Idx[id])
-
 
         # 生成没有评价过的电影列表
         unrates = set(df_movie.index) - set(MovieIdx2rate.keys())
@@ -193,8 +201,17 @@ def neg_sample(df_movie, df_user, MovieId2Idx, UserId2Idx, bias, path):
             #
             # feature 4:
             # add user following id
-            for usr in UsrIdx2following:
+            for usr in UserIdx2following[ur_idx]:
                 features.append(str(bias[2] + int(usr)) + ':' + '1')
+
+            # feature 5:
+            # add user following rates
+            follw_usr_mv_2d = np.argwhere(following_rates[UserIdx2following[ur_idx]].mean(axis=0) > 0)
+            follw_usr_mv = follw_usr_mv_2d.flatten()
+            follw_usr_mv_rates = following_rates[UserIdx2following[ur_idx]].mean(axis=0)[
+                follw_usr_mv_2d.reshape(None, )].flatten()
+            for mv in range(len(follw_usr_mv)):
+                features.append(str(bias[3] + int(follw_usr_mv[mv])) + ':' + str(follw_usr_mv_rates[mv]))
 
             to_sort = features[1:]
             to_sort.sort(key=lambda x: int(x.split(':')[0]))
@@ -287,10 +304,10 @@ if __name__ == '__main__':
     usr_len = len(df_user)
     movie_len = len(df_movie)
 
-    bias = [usr_len, usr_len+movie_len, usr_len+2*movie_len]
-    path = './Features/4/douban'    # 40381 douban.pos, 959619 douban.neg
+    bias = [usr_len, usr_len+movie_len, usr_len+2*movie_len, usr_len*2+2*movie_len, usr_len*2+3*movie_len]
+    path = './Features/5/douban'    # 40381 douban.pos, 959619 douban.neg
 
-    MovieId2Idx, UserId2Idx = preprocess(df_movie, df_user)
-    pos_sample(df_movie, df_user, MovieId2Idx, UserId2Idx, bias, path)
-    neg_sample(df_movie, df_user, MovieId2Idx, UserId2Idx, bias, path)
+    MovieId2Idx, UserIdx2following, following_rates = preprocess(df_movie, df_user)
+    pos_sample(df_movie, df_user, MovieId2Idx, UserIdx2following, following_rates, bias, path)
+    # neg_sample(df_movie, df_user, MovieId2Idx, UserIdx2following, following_rates, bias, path)
     # split_dataset(path)
