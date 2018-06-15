@@ -173,50 +173,53 @@ def neg_sample(df_movie, df_user, MovieId2Idx, UserIdx2following, following_rate
             # MovieIdx2type[idx] = [TypeDict[tp] for tp in tps]
 
         # 对该用户没评价过的每一个电影 生成一个特征
+        sample_count = 0
         for idx in unrates:
-            features = []
-            # add ground truth
-            features.append('0')
-            # add user
-            features.append(str(ur_idx) + ':1')  # features.append(ur_idx)
-            # add item
-            features.append(str(bias[0] + int(idx)) + ':1')     # features.append(idx)
-            # feature 2:
-            # add rates
-            for mv_idx in MovieIdx2rate.keys():
-                features.append(str(bias[1] + int(mv_idx)) + ':' + str(MovieIdx2rate[mv_idx]))
-            # feature 3:
-            # 加入这个没评价过的电影的平均分数
-            features.append(str(bias[1] + int(idx)) + ':' + str(float(df_movie.loc[idx]['rate'])/2))
+            sample_count += 1
+            if sample_count%50 == 0:
+                features = []
+                # add ground truth
+                features.append('0')
+                # add user
+                features.append(str(ur_idx) + ':1')  # features.append(ur_idx)
+                # add item
+                features.append(str(bias[0] + int(idx)) + ':1')     # features.append(idx)
+                # feature 2:
+                # add rates
+                for mv_idx in MovieIdx2rate.keys():
+                    features.append(str(bias[1] + int(mv_idx)) + ':' + str(MovieIdx2rate[mv_idx]))
+                # feature 3:
+                # 加入这个没评价过的电影的平均分数
+                features.append(str(bias[1] + int(idx)) + ':' + str(float(df_movie.loc[idx]['rate'])/2))
 
-            # # add movie year
-            # # if MovieIdx2yr[idx] != '':
-            # #     features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
-            # # else:exit()
-            # #     features.append(str(bias[2]) + ':0')
-            #
-            # # add movie type
-            # for i in MovieIdx2type[idx]:
-            #     features.append(str(bias[2] + i) + ':' + '1')
-            #
-            # feature 4:
-            # add user following id
-            for usr in UserIdx2following[ur_idx]:
-                features.append(str(bias[2] + int(usr)) + ':' + '1')
+                # # add movie year
+                # # if MovieIdx2yr[idx] != '':
+                # #     features.append(str(bias[2]) + ':' + MovieIdx2yr[idx])
+                # # else:exit()
+                # #     features.append(str(bias[2]) + ':0')
+                #
+                # # add movie type
+                # for i in MovieIdx2type[idx]:
+                #     features.append(str(bias[2] + i) + ':' + '1')
+                #
+                # feature 4:
+                # add user following id
+                for usr in UserIdx2following[ur_idx]:
+                    features.append(str(bias[2] + int(usr)) + ':' + '1')
 
-            # feature 5:
-            # add user following rates
-            follw_usr_mv_2d = np.argwhere(following_rates[UserIdx2following[ur_idx]].mean(axis=0) > 0)
-            follw_usr_mv = follw_usr_mv_2d.flatten()
-            follw_usr_mv_rates = following_rates[UserIdx2following[ur_idx]].mean(axis=0)[
-                follw_usr_mv_2d.reshape(None, )].flatten()
-            for mv in range(len(follw_usr_mv)):
-                features.append(str(bias[3] + int(follw_usr_mv[mv])) + ':' + str(follw_usr_mv_rates[mv]))
+                # feature 5:
+                # add user following rates
+                follw_usr_mv_2d = np.argwhere(following_rates[UserIdx2following[ur_idx]].mean(axis=0) > 0)
+                follw_usr_mv = follw_usr_mv_2d.flatten()
+                follw_usr_mv_rates = following_rates[UserIdx2following[ur_idx]].mean(axis=0)[
+                    follw_usr_mv_2d.reshape(None, )].flatten()
+                for mv in range(len(follw_usr_mv)):
+                    features.append(str(bias[3] + int(follw_usr_mv[mv])) + ':' + str(follw_usr_mv_rates[mv]))
 
-            to_sort = features[1:]
-            to_sort.sort(key=lambda x: int(x.split(':')[0]))
-            features[1:] = to_sort
-            file.write(' '.join(features) + '\n')
+                to_sort = features[1:]
+                to_sort.sort(key=lambda x: int(x.split(':')[0]))
+                features[1:] = to_sort
+                file.write(' '.join(features) + '\n')
 
     file.close()
 
@@ -308,6 +311,6 @@ if __name__ == '__main__':
     path = './Features/5/douban'    # 40381 douban.pos, 959619 douban.neg
 
     MovieId2Idx, UserIdx2following, following_rates = preprocess(df_movie, df_user)
-    pos_sample(df_movie, df_user, MovieId2Idx, UserIdx2following, following_rates, bias, path)
-    # neg_sample(df_movie, df_user, MovieId2Idx, UserIdx2following, following_rates, bias, path)
+    # pos_sample(df_movie, df_user, MovieId2Idx, UserIdx2following, following_rates, bias, path)
+    neg_sample(df_movie, df_user, MovieId2Idx, UserIdx2following, following_rates, bias, path)
     # split_dataset(path)
