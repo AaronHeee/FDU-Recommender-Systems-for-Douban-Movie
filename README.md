@@ -1,10 +1,10 @@
 # 豆瓣电影推荐系统
 
-利用豆瓣电影数据进行社交网络分析和推荐系统搭建的课程Project。具体算法和模型可见report文件夹。
+利用豆瓣电影数据进行社交网络分析和推荐系统搭建的课程Project。具体算法和模型可见report文件夹。数据可视化demo可以进入: https://aaronheee.github.io/Recommender-Systems-for-Douban-Movie 查看。
 
 
 
-##快速开始：
+## 快速开始：
 
 ### 环境要求：
 
@@ -25,7 +25,7 @@
 
 ### MySQL数据表：
 
-#### Movie 表
+#### Movie 表 - 41785条
 | Field     | Type         | Null | Key  | Default | Extra          |
 | --------- | ------------ | ---- | ---- | ------- | -------------- |
 | number    | int(11)      | NO   | PRI  | NULL    | auto_increment |
@@ -39,7 +39,7 @@
 | type      | varchar(64)  | YES  |      | NULL    |                |
 | countries | varchar(32)  | YES  |      | NULL    |                |
 | summary   | text         | YES  |      | NULL    |                |
-#### User 表
+#### User 表 - 5000条
 
 | Field        | Type        | Null | Key  | Default | Extra          |
 | ------------ | ----------- | ---- | ---- | ------- | -------------- |
@@ -219,7 +219,7 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 
 - 有时间可以尝试KCNN提取文本信息(ddl: 06.07+)  
 - 开始着手写report和PPT的相关部分
-</details>
+  </details>
 
 
 #### [小花](https://github.com/Rshcaroline): 完成数据清洗、特征提取、比较，兼负责SVM模型的搭建：
