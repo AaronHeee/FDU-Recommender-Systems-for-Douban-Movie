@@ -1,0 +1,15 @@
+/*
+ Custom style for documents.
+ 
+ Not needed for Mega Menu or Bootstrap.
+ 
+ Developed by Weborithm.
+ Follow me on twitter.com/weborithm
+ 
+*/
+
+.lead { color: #5a5a5a }
+.span4 h2 { font-family: 'Lato', sans-serif; font-weight: 300; }
+.page-header h1 { font-family: 'Lato', sans-serif; font-weight: 300; }
+.lead { font-family: 'Lato', sans-serif; font-weight: 400; }
+p { font-family: 'Karla', sans-serif; }

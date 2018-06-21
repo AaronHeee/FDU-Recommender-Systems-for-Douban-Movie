@@ -1,0 +1,92 @@
+/*
+ Responsive Mega Menu, Blue Color
+ 
+ Custom styles for use with your Bootstrap powered site
+ Developed by Weborithm.
+ Follow me on twitter.com/weborithm
+ 
+*/
+
+.nav-red {
+background-color: #da4f49;
+background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+border-color: #bd362f #bd362f #802420;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+*background-color: #bd362f;
+/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+  
+.nav-red .nav > li > a { color: #fff; text-shadow: 0 -1px 0 #bd362f; }
+.nav-red .nav > li > a:focus, .nav-red .nav > li > a:hover { color: #541614; text-shadow: 0 1px 0 #ee5f5b; }
+.nav-red .nav li.dropdown.open > .dropdown-toggle,
+.nav-red .nav li.dropdown.active > .dropdown-toggle,
+.nav-red .nav li.dropdown.open.active > .dropdown-toggle { background: #bd362f; color: #fff; text-shadow: 0 -1px 0 #bd362f; }
+
+.nav-red .nav li.dropdown:hover > .dropdown-toggle .caret { border-top: 4px solid #541614; }
+.nav-red .nav li.dropdown > .dropdown-toggle .caret,
+.nav-red .nav li.dropdown.open a:hover .caret,
+.nav-red .nav li.dropdown.open > .dropdown-toggle .caret,
+.nav-red .nav li.dropdown.active > .dropdown-toggle .caret,
+.nav-red .nav li.dropdown.open.active > .dropdown-toggle .caret { border-top: 4px solid #fff; }
+
+.nav-red .dropdown-menu a { text-shadow: none; }
+
+.nav-red .dropdown-menu .active > a,
+.nav-red .dropdown-menu li > a,
+.nav-red .dropdown-submenu > a { padding: 3px 0; }
+
+.nav-red .dropdown-menu li > a:hover,
+.nav-red .dropdown-menu li > a:focus,
+.nav-red .dropdown-submenu:hover > a { 
+color: #fff;
+background-color: #da4f49;
+background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+border-color: #bd362f #bd362f #802420;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+*background-color: #bd362f;
+/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+
+.navbar .nav-red .btn-navbar {
+background-color: #da4f49;
+background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
+background-image: -webkit-linear-gradient(top, #ee5f5b, #bd362f);
+background-image: -o-linear-gradient(top, #ee5f5b, #bd362f);
+background-image: linear-gradient(to bottom, #ee5f5b, #bd362f);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffee5f5b', endColorstr='#ffbd362f', GradientType=0);
+border-color: #bd362f #bd362f #802420;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+*background-color: #bd362f;
+/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+
+.nav-red .btn-navbar .icon-bar {
+background-color: #802420;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none; }
+
+@media (max-width: 979px) {
+
+.nav-red .nav > li > a:hover { background: none; }
+.nav-red .nav-collapse a { color: #fff; }
+.nav-red .dropdown-menu li > a:hover,
+.nav-red .dropdown-menu li > a:focus,
+.nav-red .dropdown-submenu:hover > a { color: #541614; background: none; }
+.nav-red .nav-collapse .nav-title, .nav-red .nav-collapse .nav .nav-header { color: #fff; border-bottom: 1px solid #bd362f; text-shadow: 0 1px 0 #802420; }
+
+}
