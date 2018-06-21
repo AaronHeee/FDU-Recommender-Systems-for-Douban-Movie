@@ -1,5 +1,26 @@
 # 豆瓣电影推荐系统
 
+利用豆瓣电影数据进行社交网络分析和推荐系统搭建的课程Project。具体算法和模型可见report文件夹。
+
+
+
+##快速开始：
+
+### 环境要求：
+
+-  Tensorflow > r1.0
+-  Python 3.6
+-  Numpy、Pandas、tqdm
+-  PyEcharts（可选）
+-  DeepWalk（可选）
+
+### 启动命令:
+
+-  进入 neural_models/文件夹
+-  输入`python NeuralFM.py` 或 `python FM.py`即可，详细参数可见 `python ${model_name}.py -h`
+
+
+
 ## 数据：
 
 ### MySQL数据表：
@@ -33,7 +54,7 @@
 ```python
 import pandas as pd
 from sqlalchemy import create_engine
-engine = create_engine('mysql://root:qwert12345@localhost:3306/douban', convert_unicode=True, encoding='utf-8', connect_args={"charset":"utf8"})
+engine = create_engine('mysql://root:123456@localhost:3306/douban', convert_unicode=True, encoding='utf-8', connect_args={"charset":"utf8"})
 df_movie = pd.read_sql('movie', engine)
 df_user = pd.read_sql('user', engine)
 ```
@@ -82,14 +103,14 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 
 - 模型使用：
 
-  - 进入 neural_factorization_machine/文件夹
+  - 进入 neural_models/文件夹
   - 输入`python FM.py` 即可，详细参数可见 `python FM.py -h`
 
 - 参数调优：
 
   - 调优方式：
 
-    - 进入 neural_factorization_machine/bash，新建 .sh 文件，命名规则为 **模型名\_参数名1_参数名2.sh**
+    - 进入 neural_models/bash，新建 .sh 文件，命名规则为 **模型名\_参数名1_参数名2.sh**
 
     - 举例：新建 FM_lr_bs.sh，输入
 
@@ -114,14 +135,14 @@ PS.  使用Python3。建议在Pycharm上进行操作，在iterm2的terminal上�
 
 - 模型使用：
 
-  - 进入 neural_factorization_machine/文件夹
+  - 进入 neural_models/文件夹
   - 输入`python NeuralFM.py` 即可，详细参数可见 `python NeuralFM.py -h`
 
 - 参数调优：
 
   - 调优方式：
 
-    - 进入 neural_factorization_machine/bash，新建 .sh 文件，命名规则为 **模型名\_参数名1_参数名2.sh**
+    - 进入 neural_models/bash，新建 .sh 文件，命名规则为 **模型名\_参数名1_参数名2.sh**
 
     - 举例：新建 NeuralFM_lr_bs.sh，输入
 
@@ -161,7 +182,7 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 
 #### 目标：
 
-- **Baseline:** ItemPopularity、SVM、FM √
+- **Baseline:** ItemPopularity√、SVM√、FM √
 - **Main Model:**  NeuralFM √
 - **Graph visualization:** PyEcharts Graph √
 
@@ -276,6 +297,10 @@ PS. 启动程序脚本非常简单，主要是想多用几台服务器节约时�
 
 </details>
 
-Update 2018.05.28
+
+
+
+
+Update 2018.06.21
 
 
