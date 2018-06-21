@@ -1,0 +1,92 @@
+/*
+ Responsive Mega Menu, Green Color
+ 
+ Custom styles for use with your Bootstrap powered site
+ Developed by Weborithm.
+ Follow me on twitter.com/weborithm
+ 
+*/
+
+.nav-orange {
+background-color: #faa732;
+background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+background-image: -o-linear-gradient(top, #fbb450, #f89406);
+background-image: linear-gradient(to bottom, #fbb450, #f89406);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+border-color: #f89406 #f89406 #ad6704;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+*background-color: #f89406;
+/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+
+.nav-orange .nav > li > a { color: #fff; text-shadow: 0 -1px 0 #ad6704; }
+.nav-orange .nav > li > a:focus, .nav-orange .nav > li > a:hover { color: #fff; text-shadow: 0 1px 0 #ad6704; }
+.nav-orange .nav li.dropdown.open > .dropdown-toggle,
+.nav-orange .nav li.dropdown.active > .dropdown-toggle,
+.nav-orange .nav li.dropdown.open.active > .dropdown-toggle { background: #f89406; color: #fff; text-shadow: 0 -1px 0 #ad6704; }
+
+.nav-orange .nav li.dropdown:hover > .dropdown-toggle .caret { border-top: 4px solid #fff; }
+.nav-orange .nav li.dropdown > .dropdown-toggle .caret,
+.nav-orange .nav li.dropdown.open a:hover .caret,
+.nav-orange .nav li.dropdown.open > .dropdown-toggle .caret,
+.nav-orange .nav li.dropdown.active > .dropdown-toggle .caret,
+.nav-orange .nav li.dropdown.open.active > .dropdown-toggle .caret { border-top: 4px solid #fff; }
+
+.nav-orange .dropdown-menu a { text-shadow: none; }
+
+.nav-orange .dropdown-menu .active > a,
+.nav-orange .dropdown-menu li > a,
+.nav-orange .dropdown-submenu > a { padding: 3px 0; }
+
+.nav-orange .dropdown-menu li > a:hover,
+.nav-orange .dropdown-menu li > a:focus,
+.nav-orange .dropdown-submenu:hover > a { 
+color: #fff;
+background-color: #faa732;
+background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+background-image: -o-linear-gradient(top, #fbb450, #f89406);
+background-image: linear-gradient(to bottom, #fbb450, #f89406);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+border-color: #f89406 #f89406 #ad6704;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+*background-color: #f89406;
+/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+
+.navbar .nav-orange .btn-navbar {
+background-color: #faa732;
+background-image: -moz-linear-gradient(top, #fbb450, #f89406);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fbb450), to(#f89406));
+background-image: -webkit-linear-gradient(top, #fbb450, #f89406);
+background-image: -o-linear-gradient(top, #fbb450, #f89406);
+background-image: linear-gradient(to bottom, #fbb450, #f89406);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffbb450', endColorstr='#fff89406', GradientType=0);
+border-color: #f89406 #f89406 #ad6704;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+*background-color: #f89406;
+/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+
+.nav-orange .btn-navbar .icon-bar {
+background-color: #ad6704;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none; }
+
+@media (max-width: 979px) {
+
+.nav-orange .nav > li > a:hover { background: none; }
+.nav-orange .nav-collapse a { color: #fff; }
+.nav-orange .dropdown-menu li > a:hover,
+.nav-orange .dropdown-menu li > a:focus,
+.nav-orange .dropdown-submenu:hover > a { color: #ad6704; background: none; }
+.nav-orange .nav-collapse .nav-title, .nav-orange .nav-collapse .nav .nav-header { color: #fff; border-bottom: 1px solid #f89406; text-shadow: 0 -1px 0 #ad6704; }
+
+}

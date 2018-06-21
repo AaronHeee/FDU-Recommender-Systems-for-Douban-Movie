@@ -1,0 +1,92 @@
+/*
+ Responsive Mega Menu, Teal Color
+ 
+ Custom styles for use with your Bootstrap powered site
+ Developed by Weborithm.
+ Follow me on twitter.com/weborithm
+ 
+*/
+
+.nav-teal {
+background-color: #49afcd;
+background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
+background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
+background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
+border-color: #2f96b4 #2f96b4 #1f6377;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+*background-color: #2f96b4;
+/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+
+.nav-teal .nav > li > a { color: #fff; text-shadow: 0 -1px 0 #1f6377; }
+.nav-teal .nav > li > a:focus, .nav-teal .nav > li > a:hover { color: #fff; text-shadow: 0 -1px 0 #1f6377; }
+.nav-teal .nav li.dropdown.open > .dropdown-toggle,
+.nav-teal .nav li.dropdown.active > .dropdown-toggle,
+.nav-teal .nav li.dropdown.open.active > .dropdown-toggle { background: #2f96b4; color: #fff; text-shadow: 0 1px 0 #1f6377; }
+
+.nav-teal .nav li.dropdown:hover > .dropdown-toggle .caret { border-top: 4px solid #fff; }
+.nav-teal .nav li.dropdown > .dropdown-toggle .caret,
+.nav-teal .nav li.dropdown.open a:hover .caret,
+.nav-teal .nav li.dropdown.open > .dropdown-toggle .caret,
+.nav-teal .nav li.dropdown.active > .dropdown-toggle .caret,
+.nav-teal .nav li.dropdown.open.active > .dropdown-toggle .caret { border-top: 4px solid #fff; }
+
+.nav-teal .dropdown-menu a { text-shadow: none; }
+
+.nav-teal .dropdown-menu .active > a,
+.nav-teal .dropdown-menu li > a,
+.nav-teal .dropdown-submenu > a { padding: 3px 0; }
+
+.nav-teal .dropdown-menu li > a:hover,
+.nav-teal .dropdown-menu li > a:focus,
+.nav-teal .dropdown-submenu:hover > a { 
+color: #fff;
+background-color: #49afcd;
+background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
+background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
+background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
+border-color: #2f96b4 #2f96b4 #1f6377;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+*background-color: #2f96b4;
+/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+
+.navbar .nav-teal .btn-navbar {
+background-color: #49afcd;
+background-image: -moz-linear-gradient(top, #5bc0de, #2f96b4);
+background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#5bc0de), to(#2f96b4));
+background-image: -webkit-linear-gradient(top, #5bc0de, #2f96b4);
+background-image: -o-linear-gradient(top, #5bc0de, #2f96b4);
+background-image: linear-gradient(to bottom, #5bc0de, #2f96b4);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5bc0de', endColorstr='#ff2f96b4', GradientType=0);
+border-color: #2f96b4 #2f96b4 #1f6377;
+border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+*background-color: #2f96b4;
+/* Darken IE7 buttons by default so they stand out more given they won't have borders */
+filter: progid:DXImageTransform.Microsoft.gradient(enabled = false); }
+
+.nav-teal .btn-navbar .icon-bar {
+background-color: #1f6377;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none; }
+
+@media (max-width: 979px) {
+
+.nav-teal .nav > li > a:hover { background: none; }
+.nav-teal .nav-collapse a { color: #fff; }
+.nav-teal .dropdown-menu li > a:hover,
+.nav-teal .dropdown-menu li > a:focus,
+.nav-teal .dropdown-submenu:hover > a { color: #1f6377; background: none; }
+.nav-teal .nav-collapse .nav-title, .nav-teal .nav-collapse .nav .nav-header { color: #fff; border-bottom: 1px solid #2f96b4; text-shadow: 0 -1px 0 #1f6377; }
+
+}
