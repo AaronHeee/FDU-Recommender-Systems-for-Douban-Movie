@@ -2,7 +2,7 @@
 
 
 
-利用豆瓣电影数据进行社交网络分析和推荐系统搭建的课程Project。具体算法和模型可见report文件夹。数据可视化demo可以进入: https://aaronheee.github.io/Recommender-Systems-for-Douban-Movie 查看。
+利用豆瓣电影数据进行社交网络分析和推荐系统搭建的课程Project。具体算法和模型可见report文件夹。数据可视化demo可以进入: https://aaronheee.github.io/FDU-Recommender-Systems-for-Douban-Movie 查看。
 
 ![demo](./web/demo.jpg)
 
